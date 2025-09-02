@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مارپیچ هفت رنگ متحرک</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #000;
+        }
+        
+        #spiral {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            animation: spin 5s linear infinite;
+            background-image: conic-gradient(red, orange, yellow, green, blue, indigo, violet);
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #loading {
+            display: none;
+            font-size: 24px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="spiral"></div>
+    <button id="stopButton">متوقف کن</button>
+    <div id="loading">لطفاً منتظر بمانید...</div>
+
+    <script>
+        const spiral = document.getElementById('spiral');
+        const stopButton = document.getElementById('stopButton');
+        const loading = document.getElementById('loading');
+        let animationRunning = true;
+
+        stopButton.addEventListener('click', () => {
+            if (animationRunning) {
+                spiral.style.animationPlayState = 'paused';
+                animationRunning = false;
+                loading.style.display = 'block';
+
+                setTimeout(() => {
+                    window.location.href = 'https://www.example.com'; // آدرس وب‌سایت خود را اینجا وارد کنید
+                }, 2000);
+            }
+        });
+    </script>
+</body>
+</html>
